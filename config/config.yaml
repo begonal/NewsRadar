@@ -113,7 +113,7 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    - id: "hacker-news"
+ - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
 
@@ -122,68 +122,72 @@ rss:
       url: "http://www.ruanyifeng.com/blog/atom.xml"
       enabled: false                  # 禁用
       # max_age_days: 3               # 示例：推送 3 天内的文章（更新较慢的博客）
-     
+      
     - id: "yahoo-finance"
       name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex
+      url: "https://finance.yahoo.com/news/rss"  # 修复了这里缺失的双引号
 
+    # ==========================================
+    # 国际知名媒体 (多国视角/涵盖地区冲突与军事动态)
+    # ==========================================
+
+    # 卡塔尔 (中东与全球冲突视角)
+    - id: "al-jazeera-english"
+      name: "Al Jazeera English (半岛电视台)"
+      url: "https://www.aljazeera.com/xml/rss/all.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 俄罗斯 (俄方视角与动态)
+    - id: "rt-news"
+      name: "RT News (今日俄罗斯 - 综合新闻)"
+      url: "https://www.rt.com/rss/news/"
+      enabled: true
+      max_age_days: 0
+
+    - id: "tass-world"
+      name: "TASS (塔斯社 - 国际新闻)"
+      url: "https://tass.com/rss/v2.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 法国 (偏重欧洲、北约及非洲防务动态)
+    - id: "france-24-world"
+      name: "France 24 (法国24台 - 国际新闻)"
+      url: "https://www.france24.com/en/rss"
+      enabled: true
+      max_age_days: 0
+
+    # 德国 (偏重欧盟政策与欧洲防务)
+    - id: "dw-world"
+      name: "DW World (德国之声 - 国际新闻)"
+      url: "https://rss.dw.com/rdf/rss-en-world"
+      enabled: true
+      max_age_days: 0
+
+    # 英国 (综合国际与冲突前线报道)
+    - id: "bbc-news-world"
+      name: "BBC News (BBC 国际头条)"
+      url: "http://feeds.bbci.co.uk/news/world/rss.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 美国 (美方视角与全球战略)
+    - id: "nyt-world"
+      name: "NYT World (纽约时报 - 国际新闻)"
+      url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 亚洲 (亚太地缘与安全视角)
+    - id: "scmp-world"
+      name: "SCMP World (南华早报 - 国际新闻)"
+      url: "https://www.scmp.com/rss/318206/feed"
+      enabled: true
+      max_age_days: 0
 # 国际知名媒体 (多国视角/涵盖地区冲突与军事动态)
 
-# 卡塔尔 (中东与全球冲突视角)
-- id: "al-jazeera-english"
-  name: "Al Jazeera English (半岛电视台)"
-  url: "https://www.aljazeera.com/xml/rss/all.xml"
-  enabled: true
-  max_age_days: 0
-
-# 俄罗斯 (俄方视角与动态)
-- id: "rt-news"
-  name: "RT News (今日俄罗斯 - 综合新闻)"
-  url: "https://www.rt.com/rss/news/"
-  enabled: true
-  max_age_days: 0
-
-- id: "tass-world"
-  name: "TASS (塔斯社 - 国际新闻)"
-  url: "https://tass.com/rss/v2.xml"
-  enabled: true
-  max_age_days: 0
-
-# 法国 (偏重欧洲、北约及非洲防务动态)
-- id: "france-24-world"
-  name: "France 24 (法国24台 - 国际新闻)"
-  url: "https://www.france24.com/en/rss"
-  enabled: true
-  max_age_days: 0
-
-# 德国 (偏重欧盟政策与欧洲防务)
- - id: "dw-world"
-  name: "DW World (德国之声 - 国际新闻)"
-  url: "https://rss.dw.com/rdf/rss-en-world"
-  enabled: true
-  max_age_days: 0
-
-# 英国 (综合国际与冲突前线报道)
- - id: "bbc-news-world"
-  name: "BBC News (BBC 国际头条)"
-  url: "http://feeds.bbci.co.uk/news/world/rss.xml"
-  enabled: true
-  max_age_days: 0
-
-# 美国 (美方视角与全球战略)
- - id: "nyt-world"
-  name: "NYT World (纽约时报 - 国际新闻)"
-  url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
-  enabled: true
-  max_age_days: 0
-
-# 亚洲 (亚太地缘与安全视角)
- - id: "scmp-world"
-  name: "SCMP World (南华早报 - 国际新闻)"
-  url: "https://www.scmp.com/rss/318206/feed"
-  enabled: true
-  max_age_days: 0
-
+    
     # 自定义源示例
     # - id: "custom-feed"
     #   name: "自定义源"
