@@ -104,7 +104,7 @@ rss:
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（默认启用）
 
-    max_age_days: 1                   # 最大文章年龄（天）
+    max_age_days: 0                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -120,13 +120,123 @@ rss:
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
-      enabled: false                  # 禁用
-      # max_age_days: 3               # 示例：推送 3 天内的文章（更新较慢的博客）
-     
+      enabled: false
+
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
 
+    - id: "qq"
+      name: "全球"
+      url: "https://www.bing.com/news/search?q=全球新闻&format=RSS"
+# 卡塔尔 (中东与全球冲突视角)
+    - id: "al-jazeera-english"
+      name: "Al Jazeera English (半岛电视台)"
+      url: "https://www.aljazeera.com/xml/rss/all.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 俄罗斯 (俄方视角与动态)
+    - id: "rt-news"
+      name: "RT News (今日俄罗斯 - 综合新闻)"
+      url: "https://www.rt.com/rss/news/"
+      enabled: true
+      max_age_days: 0
+
+    - id: "tass-world"
+      name: "TASS (塔斯社 - 国际新闻)"
+      url: "https://tass.com/rss/v2.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 法国 (偏重欧洲、北约及非洲防务动态)
+    - id: "france-24-world"
+      name: "France 24 (法国24台 - 国际新闻)"
+      url: "https://www.france24.com/en/rss"
+      enabled: true
+      max_age_days: 0
+
+    # 德国 (偏重欧盟政策与欧洲防务)
+    - id: "dw-world"
+      name: "DW World (德国之声 - 国际新闻)"
+      url: "https://rss.dw.com/rdf/rss-en-world"
+      enabled: true
+      max_age_days: 0
+
+    # 英国 (综合国际与冲突前线报道)
+    - id: "bbc-news-world"
+      name: "BBC News (BBC 国际头条)"
+      url: "http://feeds.bbci.co.uk/news/world/rss.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 美国 (美方视角与全球战略)
+    - id: "nyt-world"
+      name: "NYT World (纽约时报 - 国际新闻)"
+      url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+      enabled: true
+      max_age_days: 0
+
+    # 亚洲 (亚太地缘与安全视角)
+    - id: "scmp-world"
+      name: "SCMP World (南华早报 - 国际新闻)"
+      url: "https://www.scmp.com/rss/318206/feed"
+      enabled: true
+      max_age_days: 0
+# ==========================================
+    # 中东冲突与区域防务专线 (多重视角)
+    # ==========================================
+    
+    # --- 以色列军方与本土视角 ---
+    - id: "israel-defense"
+      name: "Israel Defense (以色列防务 - 纯军事与装备)"
+      url: "https://www.israeldefense.co.il/en/rss.xml"
+      enabled: true
+      max_age_days: 0
+
+    - id: "jerusalem-post-conflict"
+      name: "The Jerusalem Post (耶路撒冷邮报 - 阿以冲突专栏)"
+      url: "https://www.jpost.com/rss/rssfeedsarab-israeliconflict.aspx"
+      enabled: true
+      max_age_days: 0
+
+    - id: "times-of-israel"
+      name: "The Times of Israel (以色列时报 - 综合战况)"
+      url: "https://www.timesofisrael.com/feed/"
+      enabled: true
+      max_age_days: 0
+
+    - id: "haaretz-middle-east"
+      name: "Haaretz (国土报 - 中东新闻与深度解析)"
+      url: "https://www.haaretz.com/cmlink/1.4761454"
+      enabled: true
+      max_age_days: 0
+
+    # --- 阿拉伯国家与区域视角 ---
+    - id: "al-arabiya-english"
+      name: "Al Arabiya (阿拉比亚电视台 - 沙特/海湾国家视角)"
+      url: "https://english.alarabiya.net/feed/news"
+      enabled: true
+      max_age_days: 0
+
+    - id: "middle-east-eye"
+      name: "Middle East Eye (中东之眼 - 独立前线报道)"
+      url: "https://www.middleeasteye.net/rss"
+      enabled: true
+      max_age_days: 0
+
+    - id: "the-national-mena"
+      name: "The National (国家报 - 阿联酋/中东与北非动态)"
+      url: "https://www.thenationalnews.com/arc/outboundfeeds/rss/category/mena/?outputType=xml"
+      enabled: true
+      max_age_days: 0
+
+    # --- 独立中东情报与防务智库 ---
+    - id: "al-monitor"
+      name: "Al-Monitor (中东独立观察 - 各方势力深度情报)"
+      url: "https://www.al-monitor.com/rss.xml"
+      enabled: true
+      max_age_days: 0
     # 自定义源示例
     # - id: "custom-feed"
     #   name: "自定义源"
