@@ -104,7 +104,7 @@ rss:
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（默认启用）
 
-    max_age_days: 0                   # 最大文章年龄（天）
+    max_age_days: 1                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -120,86 +120,12 @@ rss:
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
-      enabled: false
-
+      enabled: false                  # 禁用
+      # max_age_days: 3               # 示例：推送 3 天内的文章（更新较慢的博客）
+     
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
-
-    - id: "qq"
-      name: "全球"
-      url: "https://www.bing.com/news/search?q=全球新闻&format=RSS"
-
-    - id: "al-jazeera-english"
-      name: "Al Jazeera English (半岛电视台)"
-      url: "https://www.aljazeera.com/xml/rss/all.xml"
-      max_age_days: 0
-
-    - id: "rt-news"
-      name: "RT News (今日俄罗斯 - 综合新闻)"
-      url: "https://www.rt.com/rss/news/"
-      max_age_days: 0
-
-    - id: "tass-world"
-      name: "TASS (塔斯社 - 国际新闻)"
-      url: "https://tass.com/rss/v2.xml"
-      max_age_days: 0
-
-    - id: "france-24-world"
-      name: "France 24 (法国24台 - 国际新闻)"
-      url: "https://www.france24.com/en/rss"
-      max_age_days: 0
-
-    - id: "dw-world"
-      name: "DW World (德国之声 - 国际新闻)"
-      url: "https://rss.dw.com/rdf/rss-en-world"
-      max_age_days: 0
-
-    - id: "bbc-news-world"
-      name: "BBC News (BBC 国际头条)"
-      url: "http://feeds.bbci.co.uk/news/world/rss.xml"
-      max_age_days: 0
-
-    - id: "nyt-world"
-      name: "NYT World (纽约时报 - 国际新闻)"
-      url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
-      max_age_days: 0
-
-    - id: "scmp-world"
-      name: "SCMP World (南华早报 - 国际新闻)"
-      url: "https://www.scmp.com/rss/318206/feed"
-      max_age_days: 0
-
-    - id: "israel-defense"
-      name: "Israel Defense (以色列防务 - 纯军事与装备)"
-      url: "https://www.israeldefense.co.il/en/rss.xml"
-      max_age_days: 0
-
-    - id: "jerusalem-post-conflict"
-      name: "The Jerusalem Post (耶路撒冷邮报 - 阿以冲突专栏)"
-      url: "https://www.jpost.com/rss/rssfeedsarab-israeliconflict.aspx"
-      max_age_days: 0
-
-    - id: "times-of-israel"
-      name: "The Times of Israel (以色列时报 - 综合战况)"
-      url: "https://www.timesofisrael.com/feed/"
-      max_age_days: 0
-
-    - id: "haaretz-middle-east"
-      name: "Haaretz (国土报 - 中东新闻与深度解析)"
-      url: "https://www.haaretz.com/cmlink/1.4761454"
-      max_age_days: 0
-
-    - id: "al-arabiya-english"
-      name: "Al Arabiya (阿拉比亚电视台 - 沙特/海湾国家视角)"
-      url: "https://english.alarabiya.net/feed/news"
-      max_age_days: 0
-
-    - id: "middle-east-eye"
-      name: "Middle East Eye (中东之眼 - 独立前线报道)"
-      url: "https://www.middleeasteye.net/rss"
-      max_age_days: 0
-
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -325,21 +251,36 @@ display:
   #   1. 在此列表中
   #   2. 下方 regions 中对应开关为 true
   region_order:
-    - new_items                       # 1️⃣ 新增热点区域
-    - hotlist                       # 2️⃣ 热榜区域（关键词匹配 / AI 智能筛选）
-    - rss                       # 3️⃣ RSS 订阅区域
-    - standalone                       # 4️⃣ 独立展示区
-    - ai_analysis                       # 5️⃣ AI 分析区域
+    - new_items                           # 1️⃣ 新增热点区域
+    - hotlist                             # 2️⃣ 热榜区域（关键词匹配 / AI 智能筛选）
+    - rss                                 # 3️⃣ RSS 订阅区域
+    - standalone                          # 4️⃣ 独立展示区
+    - ai_analysis                         # 5️⃣ AI 分析区域
+
+  # 推送区域开关
+  # 控制各区域是否启用（配合 region_order 使用）
   regions:
-    new_items: false # 新增热点区域（含热榜新增 + RSS 新增）
-    hotlist: true # 热榜区域（关键词匹配 / AI 智能筛选）
-    rss: true # RSS 订阅区域
-    standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
-    ai_analysis: true # AI 分析区域
+    hotlist: true                     # 热榜区域（关键词匹配 / AI 智能筛选）
+    new_items: false                   # 新增热点区域（含热榜新增 + RSS 新增）
+                                      # 注：热点词汇统计中的新增标记🆕不受此配置影响
+
+    rss: true                         # RSS 订阅区域
+                                      # 开启后将对 RSS 进行关键词分析并在通知中展示
+                                      # 关闭后跳过分析，但独立展示区不受影响
+
+    standalone: false                 # 独立展示区（完整热榜/RSS，不受关键词过滤）
+    ai_analysis: true                 # AI 分析区域
+
+  # 📋 独立展示区配置
+  # 用途：将指定平台的完整热榜/RSS 数据独立提取，不受关键词过滤影响
+  # 两个独立用途：
+  #   - 推送展示：由 regions.standalone 开关控制，在推送中单独展示完整热榜
+  #   - AI 分析：由 ai_analysis.include_standalone 开关控制，将完整数据送入 AI 做深度分析
+  # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
-    platforms: [] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
-    max_items: 5                     # 每个源最多展示条数（0=不限制）
+    max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
 # ===============================================================
@@ -591,7 +532,7 @@ ai_translation:
   # 翻译目标语言
   # 格式：自然语言描述
   # 示例: "Chinese", "Korean", "法语"
-  language: "Chinese"
+  language: "中文"
 
   # 提示词配置文件路径（相对于 config 目录）
   prompt_file: "ai_translation_prompt.txt"
@@ -603,7 +544,7 @@ ai_translation:
   # standalone: 独立展示区（热榜平台 + RSS 源）
   # 如果 display.regions 关闭了显示，那么这边即使开启了也不会翻译
   scope:
-    hotlist: true                  # 热榜区域
+    hotlist: false                  # 热榜区域
     rss: true                      # RSS 区域
     standalone: true               # 独立展示区
 
